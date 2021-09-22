@@ -123,7 +123,7 @@ struct StringsStructGenerator: ExternalOnlyStructGenerator {
       let paddedKeys = missing.sorted().map { "'\($0)'" }
       let paddedKeysString = paddedKeys.joined(separator: ", ")
 
-      warn("Strings file \(filenameLocale) is missing translations for keys: \(paddedKeysString)")
+      //warn("Strings file \(filenameLocale) is missing translations for keys: \(paddedKeysString)")
     }
 
     // Warnings about extra translations
@@ -141,7 +141,7 @@ struct StringsStructGenerator: ExternalOnlyStructGenerator {
       let paddedKeys = extra.sorted().map { "'\($0)'" }
       let paddedKeysString = paddedKeys.joined(separator: ", ")
 
-      warn("Strings file \(filenameLocale) has extra translations (not in \(primaryLanguage)) for keys: \(paddedKeysString)")
+      //warn("Strings file \(filenameLocale) has extra translations (not in \(primaryLanguage)) for keys: \(paddedKeysString)")
     }
 
     // Only include translation if it exists in the primary language
@@ -169,7 +169,7 @@ struct StringsStructGenerator: ExternalOnlyStructGenerator {
       for (locale, _, ps) in keyParams {
         if ps.contains(where: { $0.spec == FormatSpecifier.topType }) {
           let name = locale.withFilename(filename)
-          warn("Skipping string \(key) in \(name), not all format specifiers are consecutive")
+          //warn("Skipping string \(key) in \(name), not all format specifiers are consecutive")
 
           areCorrectFormatSpecifiers = false
         }
@@ -200,7 +200,7 @@ struct StringsStructGenerator: ExternalOnlyStructGenerator {
 
       if let params = fewParams.first {
         let locales = params.compactMap { $0.0.localeDescription }.joined(separator: ", ")
-        warn("Skipping string for key \(badKey) (\(filename)), format specifiers don't match for all locales: \(locales)")
+        //warn("Skipping string for key \(badKey) (\(filename)), format specifiers don't match for all locales: \(locales)")
       }
     }
 
